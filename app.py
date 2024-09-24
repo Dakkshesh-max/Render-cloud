@@ -28,7 +28,8 @@ def predict():
     input_data = np.array([[order_number, days_since_prior_order, add_to_cart_order, recency, frequency, monetary, reorder_rate]])
 
     # Make prediction using the locally loaded model
-    prediction = model.predict(input_data)
+    prediction = model.predict(input_data, predict_disable_shape_check=True)
+
 
     # Interpret the result
     prediction_text = "Reorder Prediction: Yes" if prediction[0] > 0.5 else "Reorder Prediction: No"
